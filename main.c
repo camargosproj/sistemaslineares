@@ -32,7 +32,7 @@ bool menu(){
 
     }else if(ordemMax == 4){
         mostrar(ordemMax);
-    }else if(op == 5){
+    }else if(ordemMax == 5){
         return false;
     }else{
         printf("Entrada Invalida!\n");
