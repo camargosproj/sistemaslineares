@@ -82,15 +82,15 @@ void mostrar(int var){
     for(int i = 0; i < var-1; i++){
        for (int j = 0; j < var; j++){
             if (j ==0){
-                printf("%.1lfX", matriz[i][j]);
+                printf("%.1lfX ", matriz[i][j]);
             }else if(j == 1){
-                printf("%.1lfy", matriz[i][j]);
+                printf("%.1lfy ", matriz[i][j]);
             }else if(j == 2 && var == 3){
-                printf("=%.1lf", matriz[i][j]);
+                printf("= %.1lf", matriz[i][j]);
             }else if(j == 2 && var == 4){
                 printf("%.1lfz", matriz[i][j]);
             }else if(j == 3 && var == 4){
-                printf("=%.1lf", matriz[i][j]);
+                printf(" = %.1lf", matriz[i][j]);
             }    
       
        }
@@ -103,7 +103,6 @@ double matrizCoef(double matriz[][ordemMax],double det, int ordem){
   double matrizDy[ordem-1][ordem-1];
   double matrizDz[ordem-1][ordem-1];
 
-  printf("Ordem aqui %d\n",ordemMax);
   // Adicionando o elemento complementar da ultima coluna 
    for(int i = 0; i < ordem-1; i++){
         for (int j = 0; j < ordem-1; j++){
@@ -172,10 +171,10 @@ double matrizCoef(double matriz[][ordemMax],double det, int ordem){
     } 
 }
     printf("O det da matriz é %.3lf\n",det);
-    printf("O valor de Dx é %.3lf\n",calcularDeterminate(matrizDx,ordem-1)/det);
-    printf("O valor de Dy é %.3lf\n",calcularDeterminate(matrizDy,ordem-1)/det);
+    printf("O valor de x é %.3lf\n",calcularDeterminate(matrizDx,ordem-1)/det);
+    printf("O valor de y é %.3lf\n",calcularDeterminate(matrizDy,ordem-1)/det);
     if(ordem ==4 ){
-            printf("O valor de Dz é %.3lf\n",calcularDeterminate(matrizDz,ordem-1)/det);
+            printf("O valor de z é %.3lf\n",calcularDeterminate(matrizDz,ordem-1)/det);
     }
 }
 
