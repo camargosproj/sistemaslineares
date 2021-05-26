@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
-int ordemMax = 3;
+int ordemMax;
 double calcularDeterminate(double matriz[][ordemMax], int ordem);
 double calcularCofator(double matriz[][ordemMax],int ordem,int linha,int coluna);
 double matrizCoef(double matriz[][ordemMax], double det,int ordem);
@@ -23,16 +23,16 @@ bool menu(){
     printf("\e[1;1H\e[2J");
     printf("Esse programa resolve sistemas Lineares de 2 e 3 Variaveis!\n");
     printf("Digite o número da operação que deseja realizar\n");
-    printf("1 - Sistema de 2 variaveis\n");
-    printf("2 - Sistema de 3 variaveis\n");
-    printf("3 - Sair\n");
-    scanf("%d",&op);
-    if (op == 1){
-        mostrar(3);
+    printf("3 - Sistema de 2 variaveis\n");
+    printf("4 - Sistema de 3 variaveis\n");
+    printf("5 - Sair\n");
+    scanf("%d",&ordemMax);
+    if (ordemMax == 3){
+        mostrar(ordemMax);
 
-    }else if(op == 2){
-        mostrar(4);
-    }else if(op == 3){
+    }else if(ordemMax == 4){
+        mostrar(ordemMax);
+    }else if(op == 5){
         return false;
     }else{
         printf("Entrada Invalida!\n");
@@ -97,17 +97,13 @@ void mostrar(int var){
         printf("\n");
     }
     matrizCoef(matriz,calcularDeterminate(matrizD, var-1), var);
-
-   
-
-
 }
 double matrizCoef(double matriz[][ordemMax],double det, int ordem){
   double matrizDx[ordem-1][ordem-1];
   double matrizDy[ordem-1][ordem-1];
   double matrizDz[ordem-1][ordem-1];
 
-  printf("Ordem aqui %d\n",ordem);
+  printf("Ordem aqui %d\n",ordemMax);
   // Adicionando o elemento complementar da ultima coluna 
    for(int i = 0; i < ordem-1; i++){
         for (int j = 0; j < ordem-1; j++){
@@ -184,7 +180,7 @@ double matrizCoef(double matriz[][ordemMax],double det, int ordem){
 }
 
 double calcularCofator(double matriz[][ordemMax-1],int ordem,int linha,int coluna){
-  double matrizCofator[ordem-1][ordem-1];
+  double matrizCofator[ordemMax-1][ordemMax-1];
   int n = ordem - 1;
   int x = 0;
   int y = 0;
