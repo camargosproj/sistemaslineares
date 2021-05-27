@@ -20,26 +20,35 @@ int main(){
 
 bool menu(){
     int op;
-    printf("\e[1;1H\e[2J");
+    printf("\e[1;1H\e[2J");    
     printf("Esse programa resolve sistemas Lineares de 2 e 3 Variaveis!\n");
-    printf("Digite o número da operação que deseja realizar\n");
-    printf("3 - Sistema de 2 variaveis\n");
-    printf("4 - Sistema de 3 variaveis\n");
-    printf("5 - Sair\n");
-    scanf("%d",&ordemMax);
-    if (ordemMax == 3){
-        mostrar(ordemMax);
+    printf("Aviso!!\nEste programa está na versão 1.0 podendo ainda conter falhas,\nno momento, o programa não pode receber nada além de números\nDigite 1 e pressione Enter para iniciar\n");
+    scanf("%d",&op);
+    if (op == 1)
+    {
+         
+        printf("\e[1;1H\e[2J");       
+        printf("Digite o número da operação que deseja realizar\n");
+        printf("3 - Sistema de 2 variaveis\n");
+        printf("4 - Sistema de 3 variaveis\n");
+        printf("5 - Sair\n");
+        scanf("%d",&ordemMax);
+        if (ordemMax == 3){
+            mostrar(ordemMax);
 
-    }else if(ordemMax == 4){
-        mostrar(ordemMax);
-    }else if(ordemMax == 5){
-        return false;
+        }else if(ordemMax == 4){
+            mostrar(ordemMax);
+        }else if(ordemMax == 5){
+            return false;
+        }else{
+            printf("Entrada Invalida!\n");
+            menu();      
+
+        }
     }else{
-        printf("Entrada Invalida!\n");
-        menu();
-       
-
-    }
+        printf("Entrada Invalida\n");
+}
+   
 
 }
 void mostrar(int var){
@@ -170,12 +179,26 @@ double matrizCoef(double matriz[][ordemMax],double det, int ordem){
         printf("\n");
     } 
 }
-    printf("O det da matriz é %.3lf\n",det);
+if(det != 0){
+    printf("O determinante da matriz é %.3lf\n",det);
     printf("O valor de x é %.3lf\n",calcularDeterminate(matrizDx,ordem-1)/det);
     printf("O valor de y é %.3lf\n",calcularDeterminate(matrizDy,ordem-1)/det);
     if(ordem ==4 ){
             printf("O valor de z é %.3lf\n",calcularDeterminate(matrizDz,ordem-1)/det);
     }
+    printf("O sistema é possivel e determinado!\n");
+
+}else{
+    if(calcularDeterminate(matrizDx,ordem-1) == 0 && calcularDeterminate(matrizDy,ordem-1) == 0){
+        printf("O sistema é possivel e Ideterminado!\n");
+    }else if(calcularDeterminate(matrizDx,ordem-1) == 0 && calcularDeterminate(matrizDy,ordem-1) == 0 && calcularDeterminate(matrizDz,ordem-1) == 0){
+        printf("O sistema é possivel e Ideterminado!\n");    }
+    else{
+        printf("O sistema é impossivel!\n");
+
+    }
+}
+   
 }
 
 double calcularCofator(double matriz[][ordemMax-1],int ordem,int linha,int coluna){
